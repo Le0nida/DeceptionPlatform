@@ -1,0 +1,8 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduzione}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Core-business Features}{2}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Funzionalità aggiuntive}{3}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Realisticità dei RestApi server generati}{4}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Estensioni e sviluppi futuri}{4}{subsection.1.1.3}%
+\contentsline {section}{\numberline {1.2}Obiettivi architetturali}{5}{section.1.2}%

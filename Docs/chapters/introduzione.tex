@@ -1,0 +1,86 @@
+\chapter{Introduzione}
+
+Questo documento presenta la progettazione di una piattaforma per la generazione di risorse di deception. In particolare, ci si concentrerà sulla generazione di RestApi server, con la possibilità di aggiungere, in futuro, altre tipologie di risorse, come provider di sicurezza o database relazionali.\\
+
+\noindent La piattaforma sarà composta da due parti principali: un'interfaccia grafica per la configurazione e la generazione delle risorse, ed un backend per gestire la logica di business.\\
+I dettagli architetturali verrano però esaminati in seguito dopo una precisa definizione ed analisi dei requisiti.\\
+
+\section{Core-business Features}
+
+Le funzionalità \textit{core} che verranno fornite sono:
+\begin{itemize}
+    \item creazione di un server RestApi, con la possibilità di configurare sotto ogni punto di vista gli endpoint esposti, le relative implementazioni e risposte.
+    \item configurazione della sicurezza, implementabile in maniera automatica sugli endpoint di interesse;
+    \item generazione e popolamento di database partendo da template fornito dall'utente (e.g. tabella sql o json).
+\end{itemize}
+
+
+\noindent La piattaforma che si vuole implementare ha inoltre l'obiettivo di coinvolgere una \textbf{community di utenti} che sfrutti i servizi e collabori al fine di generare componenti di deception sempre più complessi e realistici.\\
+
+\newpage
+\noindent
+Entrando in un maggior livello di dettaglio ed integrando quanto appena detto, rimanendo nel contesto in cui le risorse di deception generate siano RestApi server, verranno messe a disposizione le seguenti funzionalità:
+\begin{itemize}
+    \item forum
+    \item realizzare un server RestApi completo e pronto all'uso
+    \item realizzare, condividere ed utilizzare di altri:
+    \begin{itemize}
+        \item esempi di configurazioni generali della specifica OpenApi che risultino realistiche ed affidabili
+        \item entità alla base della specifica, con dati realistici
+        \item endpoint e (opzionalmente) eventuale implementazione
+        \item configurazioni di sicurezza ed eventuale associazione agli endpoint definiti
+        \item database e popolamento con dati realistici
+        \item eventuali pagine restituite da un certo endpoint (e.g. pagina di \textit{admin} o di \textit{login})
+    \end{itemize}
+    \item possibilità di navigare le risorse condivise, salvarle, votarle, \dots
+    \item sezioni per impostazioni utente, istruzioni, faq, contatti, \dots
+\end{itemize}
+
+\noindent Sarà presente una sezione per l'autenticazione e si dovra valutare la possibilità di definire diversi livelli per l'accesso alle funzionalità. Un'idea può essere la versione \textit{"pro"} per entrare nella community e utilizzare le risorse condivise.
+
+
+\subsection{Funzionalità aggiuntive}
+Oltre ai topic principali appena visti, saranno presenti funzionalità aggiuntive per:
+\begin{itemize}
+    \item testare gli endpoint generati;
+    \item supportare il versioning delle API (e dei server generati);
+    \item consultare logging e report degli attacchi;
+    \item introdurre integrazioni con servizi di threat intelligence per arricchire le informazioni sui potenziali attacchi e le tecniche utilizzate dagli attaccanti;
+    \item integrare sistemi di rilevamento delle minacce (come intrusion detection system, a livello di rete) per monitorare in tempo reale il traffico delle API e rilevare comportamenti sospetti o anomalie che potrebbero indicare un potenziale attacco.
+\end{itemize}
+
+
+\subsection{Realisticità dei RestApi server generati}
+Il fatto che i RestApi server generati appaiono realistici corrisponde al requisito principale, in quanto, senza di esso, verrebbe a meno lo scopo principale per cui esistono: indurre gli utenti malevoli ad attaccare questi servizi, facendogli credere che siano risorse autentiche.\\
+Per raggiungere questo obiettivo, oltre alle funzionalità già viste, vengono riportati alcuni concetti generali che saranno alla base di questi server:
+\begin{itemize}
+    \item il server deve essere ben strutturato e sicuro
+    \item gli endpoint presenti devono essere sensati e coerenti con lo scenario applicativo dell'azienda che li utilizza
+    \item le risposte agli endpoint devono essere reali, coerenti a fronte di interazioni distinte; contestualmente, anche gli errori forniti in risposta devono essere sensati
+    \item i dati su cui si basano le risposte degli endpoint devono apparire come realistici
+    \item integrazione con servizi di terze parti (fittizi o meno), come database, servizi di autenticazione, sistemi di monitoraggio, \dots
+\end{itemize}
+
+
+\subsection{Estensioni e sviluppi futuri}
+Vengono riportate di seguito alcune funzionalità avanzate che verranno eventualmente implementate se ve ne sarà la possibilità:
+\begin{itemize}
+    \item Collaborazione in tempo reale per la configurazione e l'implementazione delle risorse;
+    \item Supporto multi-lingua per migliorare l'accessibilità;
+    \item Marketplace di plugin per estendere le funzionalità della piattaforma tramite plugin e add-ons;
+    \item Integrazione con Ambiente di Simulazione per eseguire test di attacchi e difese in un ambiente controllato e sicuro.
+\end{itemize}
+
+\noindent Altre idee potrebbero sorgere durante gli sviluppi.\\
+In ogni caso il software sarà strutturato in modo tale da poter aggiungere funzionalità ed estensioni in maniera comoda, senza stravolgimenti del codice già presente.
+
+\newpage
+\section{Obiettivi architetturali}
+Astraendo dalle funzionalità applicative legate ai servizi forniti, questo progetto si pone l'obiettivo di realizzare un'architettura all'avanguardia, che soddisfi requisiti di scalabilità, disponibilità, fault tolerance, resilienza e sicurezza. \newline
+
+
+L'architettura deve essere progettata per consentire sia la scalabilità orizzontale che quella verticale. Sarà necessario pensare in termini di load balancing, auto-scaling, e gestione del traffico, sfruttando tecniche di containerizzazione e orchestrazione di essi.
+
+Ci si concentrerà sulla disponibilità e sulla fault-tolerance, con meccanismi di monitoraggio continuo e di rilevamento automatico dei guasti per garantire tempi minimi di inattività e massima disponibilità dei servizi. Verranno integrati anche meccanismi di ridondanza, failover e ripristino automatico dei servizi.\newline
+
+\noindent In generale, la piattaforma sarà conforme alle specifiche e ai requisiti di un \textbf{sistema enterpise}.
